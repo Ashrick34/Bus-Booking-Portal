@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('login.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+        }
+        .container h1 {
+            text-align: center;
+        }
+        .container label {
+            display: block;
+            margin-top: 10px;
+        }
+        .container select, .container input, .container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        .container button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Your Ticket</h1>
+        <form id="bookingForm">
+            <label for="from">From</label>
+            <select name="from" id="from" required>
+                <option value="">Select City</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <!-- Add more cities as needed -->
+            </select>
+
+            <label for="to">To</label>
+            <select name="to" id="to" required>
+                <option value="">Select City</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <!-- Add more cities as needed -->
+            </select>
+
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" required>
+
+            <label for="seats">Number of Seats</label>
+            <input type="number" name="seats" id="seats" min="1" required>
+
+            <button type="submit">Book</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/api/book', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert('Booking successful!');
+                } else {
+                    alert(result.message || 'Booking failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Booking Error:', error);
+                alert('Booking failed. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

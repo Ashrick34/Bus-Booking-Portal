@@ -1,0 +1,70 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  .navbar a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  .navbar .logo {
+    font-size: 24px;
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 100px;
+    background-image: url('bus.jpg');
+    background-size: cover;
+    color: white;
+  }
+  .hero h1 {
+    font-size: 50px;
+  }
+  .hero .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Bus List */
+  .bus-list {
+    padding: 50px;
+  }
+  .bus-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .book-btn {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+  
